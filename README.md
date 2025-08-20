@@ -1,4 +1,4 @@
-# Image Processing API
+# Image Upload API
 
 This Node.js API, built with TypeScript and Fastify, allows you to perform various image processing tasks. It leverages parallel computing, async/await, and promises to efficiently process images using the Sharp package. The API offers the following features:
 
