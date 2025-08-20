@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  image-upload-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: image-upload-api
+    ports:
+      - "2500:2500"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - FILE_OUTPUT_DIR=output
+      - APP_URL=http://localhost:2500
+    volumes:
+      # 映射输出目录到宿主机
+      - ./output:/app/output
+      # 可选：映射上传目录（如果需要）
+      - ./uploads:/app/uploads
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:2500/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+volumes:
+  output_data:
