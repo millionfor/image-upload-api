@@ -79,10 +79,7 @@ export async function processImageFromUpload(
   if (processedImagePaths.length === 1) {
     const single = processedImagePaths[0]
     reply.status(200).send({
-      data: {
-        url: single.filePath,
-        name: single.name,
-      },
+      url: single.filePath,
     })
     return
   }
