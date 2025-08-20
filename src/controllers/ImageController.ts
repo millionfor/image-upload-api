@@ -76,6 +76,17 @@ export async function processImageFromUpload(
   const processedImagePaths: ImageResponseInterface[] =
     await Promise.all(processingPromises)
 
+  if (processedImagePaths.length === 1) {
+    const single = processedImagePaths[0]
+    reply.status(200).send({
+      data: {
+        url: single.filePath,
+        name: single.name,
+      },
+    })
+    return
+  }
+
   reply.status(200).send({
     message: 'Images successfully processed',
     data: processedImagePaths,
