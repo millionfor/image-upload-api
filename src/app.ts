@@ -6,10 +6,12 @@ import * as path from 'path'
 import { ZodError } from 'zod'
 import { env } from '@/env'
 
-export const app = fastify()
+export const app = fastify({ trustProxy: true })
 app.register(fastifyMultipart, { addToBody: true })
 app.register(fastifyStatic, {
-  root: path.join(__dirname, '../output'),
+  root: path.isAbsolute(env.FILE_OUTPUT_DIR)
+    ? env.FILE_OUTPUT_DIR
+    : path.join(process.cwd(), env.FILE_OUTPUT_DIR),
   prefix: '/images',
 })
 
