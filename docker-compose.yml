@@ -10,7 +10,7 @@ services:
       - "2500:2500"
     environment:
       - NODE_ENV=production
-      - PORT=3000
+      - PORT=2500
       - FILE_OUTPUT_DIR=output
       - APP_URL=http://localhost:2500
     volumes:

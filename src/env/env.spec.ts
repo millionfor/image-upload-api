@@ -9,7 +9,7 @@ describe('Env Config', () => {
 
   it('should be able to get env variables with default values', () => {
     expect(env.NODE_ENV).toBe('test')
-    expect(env.PORT).toBe(3000)
+    expect(env.PORT).toBe(2500)
   })
 
   it('should throw an error when trying to get an invalid env variable', () => {
