@@ -12,7 +12,7 @@ services:
       - NODE_ENV=production
       - PORT=2500
       - FILE_OUTPUT_DIR=output
-      - APP_URL=https://192.168.2.172
+      - APP_URL=http://192.168.2.172
     volumes:
       # 映射输出目录到宿主机
       - ./output:/app/output
@@ -20,7 +20,7 @@ services:
       - ./uploads:/app/uploads
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "https://192.168.2.172/health"]
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://192.168.2.172/health"]
       interval: 30s
       timeout: 10s
       retries: 3
